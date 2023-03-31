@@ -1,0 +1,163 @@
+@charset "UTF-8";
+/*			Обнуление			*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.select {
+  width: auto;
+}
+.select {
+  display: inline-block;
+}
+.select__field {
+  border: 4px solid transparent;
+  background: white;
+  width: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  position: relative;
+}
+.select__field:focus {
+  border: 4px solid black;
+}
+.select__field-mark {
+  width: 10px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.select__field-mark span {
+  width: 50%;
+  height: 10%;
+  background: black;
+}
+.select__field-mark span:nth-child(1) {
+  position: absolute;
+  rotate: 45deg;
+  left: 10%;
+  border-radius: 10px 0px 10px 10px;
+}
+.select__field-mark span:nth-child(2) {
+  right: 10%;
+  position: absolute;
+  rotate: -45deg;
+  border-radius: 0px 10px 10px 10px;
+}
+.select__options {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 1;
+  left: 1;
+  width: inherit;
+  z-index: 9;
+}
+.select__option {
+  background: white;
+  display: inline-flex;
+  align-items: center;
+  width: inherit;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.select.open .select__field-mark span:nth-child(1) {
+  rotate: -45deg;
+  border-radius: 10px 10px 0px 10px;
+}
+.select.open .select__field-mark span:nth-child(2) {
+  rotate: 45deg;
+  border-radius: 10px 10px 10px 0px;
+}
+.select.open .select__options {
+  opacity: 1;
+  visibility: visible;
+}
+
+select {
+  padding: 8px 5px;
+  font-size: 20px;
+  background: rgb(210, 210, 210);
+  border-radius: 10px;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid black;
+}
