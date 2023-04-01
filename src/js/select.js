@@ -18,6 +18,7 @@ export class Select {
 		<div class="select__options">
 		</div>`;
 
+		this.selected = this.selectElem.dataset.selected;
 		this.selectField = this.selectElem.querySelector('.select__field');
 		this.selectFieldText = this.selectElem.querySelector('.select__field-text');
 		this.selectOptions = this.selectElem.querySelector('.select__options');
@@ -74,5 +75,6 @@ export class Select {
 	changeSelected(value, text) {
 		this.selectElem.dataset.selected = value;
 		this.selectFieldText.textContent = text;
+		this.selected = this.selectElem.dataset.selected;
 	}
 }
