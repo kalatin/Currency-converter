@@ -1,14 +1,81 @@
 @import './reset';
 @import './select';
 
-select {
-	padding: 8px 5px;
-	font-size: 20px;
-	background: rgb(210, 210, 210);
-	border-radius: 10px;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
 }
 
-input {
-	padding: 8px;
-	border: 1px solid black;
+body {
+	font-family: 'Open Sans';
+	background: rgb(183, 48, 123);
+	background: linear-gradient(180deg, rgba(183, 48, 123, 1) 12%, rgba(64, 61, 152, 1) 78%);
+}
+
+.currency {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	&__wrapper {
+		padding: 30px 50px;
+		max-width: 1200px;
+		background: #ffffff;
+		border-radius: 10px;
+		margin: 10px;
+		display: flex;
+		flex-direction: column;
+		row-gap: 30px;
+	}
+
+	&__title {
+		font-size: 50px;
+		color: #453f69;
+		line-height: 130%;
+	}
+
+	&__nums {
+		display: flex;
+		justify-content: center;
+		color: #3b3b3b;
+		font-size: 25px;
+		text-align: center;
+		column-gap: 15px;
+	}
+
+	&__double {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: 15px;
+	}
+	form {
+		display: flex;
+		flex-direction: column;
+		row-gap: 30px;
+	}
+	&__input {
+		padding: 10px 20px;
+		background: #dfdfdf;
+		color: #434343;
+		font-size: 18px;
+		border-radius: 5px;
+	}
+
+	&__button {
+		padding: 10px 20px;
+		background: #47467b;
+		color: white;
+		font-size: 18px;
+		border-radius: 5px;
+	}
+}
+
+.select-change {
+	svg {
+		rotate: (90deg);
+		&:hover {
+			cursor: pointer;
+		}
+	}
 }

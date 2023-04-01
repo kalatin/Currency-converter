@@ -45,7 +45,7 @@ export class Select {
 		this.options = this.selectElem.querySelectorAll('.select__option');
 		this.options.forEach(option => {
 			option.addEventListener('click', () => {
-				this.changeSelected(option.dataset.value, option.textContent);
+				this.changeSelected(option.dataset.value, option.innerHTML);
 				this.close();
 			});
 		});
@@ -74,7 +74,7 @@ export class Select {
 
 	changeSelected(value, text) {
 		this.selectElem.dataset.selected = value;
-		this.selectFieldText.textContent = text;
+		this.selectFieldText.innerHTML = text;
 		this.selected = this.selectElem.dataset.selected;
 	}
 }

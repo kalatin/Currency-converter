@@ -1,74 +1,50 @@
 import { Select } from './select.js';
+import { doubleSelect } from './doubleSelect.js';
+import { currency } from './currency.js';
 
-doubleSelect([
+export let [select_1, select_2] = [
 	new Select('select-1', [
-		{ value: 'ex1', text: 'Один', selected: true },
-		{ value: 'ex2', text: 'Два' },
-		{ value: 'ex3', text: 'Три' },
-		{ value: 'ex4', text: 'Четыре' },
+		{
+			value: 'USD',
+			text: '<img src="./src/image/country/USD.svg" class="select__option-image"/> USD',
+			selected: true,
+		},
+		{ value: 'RUB', text: '<img src="./src/image/country/RUB.svg" class="select__option-image"/> RUB' },
+		{ value: 'KZT', text: '<img src="./src/image/country/KZT.svg" class="select__option-image"/> KZT' },
+		{ value: 'BYN', text: '<img src="./src/image/country/BYN.svg" class="select__option-image"/> BYN' },
+		{ value: 'TRY', text: '<img src="./src/image/country/TRY.svg" class="select__option-image"/> TRY' },
 	]),
 	new Select('select-2', [
-		{ value: 'ex1', text: 'Один' },
-		{ value: 'ex2', text: 'Два', selected: true },
-		{ value: 'ex3', text: 'Три' },
-		{ value: 'ex4', text: 'Четыре' },
+		{
+			value: 'USD',
+			text: '<img src="./src/image/country/USD.svg" class="select__option-image"/> USD',
+		},
+		{
+			value: 'RUB',
+			text: '<img src="./src/image/country/RUB.svg" class="select__option-image"/> RUB',
+			selected: true,
+		},
+		{ value: 'KZT', text: '<img src="./src/image/country/KZT.svg" class="select__option-image"/> KZT' },
+		{ value: 'BYN', text: '<img src="./src/image/country/BYN.svg" class="select__option-image"/> BYN' },
+		{ value: 'TRY', text: '<img src="./src/image/country/TRY.svg" class="select__option-image"/> TRY' },
 	]),
-]);
+];
 
-function doubleSelect(selectArray) {
-	// Достаем селекты
-	let select_1 = selectArray[0];
-	let select_2 = selectArray[1];
+doubleSelect([select_1, select_2], 'currency__double');
 
-	// Текст выбранного select-а
-	// let textContent_1 = select_1.selectFieldText.textContent;
-	// let textContent_2 = select_2.selectFieldText.textContent;
+currency();
 
-	// Контейнер и менятель
-	let selectsContainer = document.querySelector('.select-double');
-	let changeElem = document.createElement('div');
-	changeElem.className = 'select-change';
-	changeElem.textContent = '<>';
+// const options = {
+// 	method: 'POST',
+// 	headers: {
+// 		'content-type': 'application/x-www-form-urlencoded',
+// 		'X-RapidAPI-Key': '3cfb38216dmshdd574704b76d4c5p15b531jsnc43e6f6c1d1d',
+// 		'X-RapidAPI-Host': 'community-neutrino-currency-conversion.p.rapidapi.com',
+// 	},
+// 	body: encodedParams,
+// };
 
-	// Добавляем в контейнер select-ы и менятель
-	selectsContainer.append(select_1.selectElem);
-	selectsContainer.append(changeElem);
-	selectsContainer.append(select_2.selectElem);
-
-	// Событие менятеля
-	changeElem.addEventListener('click', changeSelect);
-
-	let textContent_1 = select_1.selectFieldText.textContent;
-	let textContent_2 = select_2.selectFieldText.textContent;
-	let selected_1 = select_1.selected;
-	let selected_2 = select_2.selected;
-	function changeSelect() {
-		textContent_1 = select_1.selectFieldText.textContent;
-		textContent_2 = select_2.selectFieldText.textContent;
-		selected_1 = select_1.selected;
-		selected_2 = select_2.selected;
-		if (select_1.selected && select_2.selected) {
-			select_1.changeSelected(selected_2, textContent_2);
-			select_2.changeSelected(selected_1, textContent_1);
-		}
-	}
-
-	// Если option одинаковые
-	selectsContainer.querySelectorAll('.select__option').forEach(option => {
-		option.addEventListener('click', e => {
-			if (select_1.selected === select_2.selected) {
-				select_1.changeSelected(selected_2, textContent_2);
-				select_2.changeSelected(selected_1, textContent_1);
-				textContent_1 = select_1.selectFieldText.textContent;
-				textContent_2 = select_2.selectFieldText.textContent;
-				selected_1 = select_1.selected;
-				selected_2 = select_2.selected;
-			} else {
-				textContent_1 = select_1.selectFieldText.textContent;
-				textContent_2 = select_2.selectFieldText.textContent;
-				selected_1 = select_1.selected;
-				selected_2 = select_2.selected;
-			}
-		});
-	});
-}
+// fetch('https://community-neutrino-currency-conversion.p.rapidapi.com/convert', options)
+// 	.then(response => response.json())
+// 	.then(response => console.log(response))
+// 	.catch(err => console.error(err));

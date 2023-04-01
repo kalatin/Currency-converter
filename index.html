@@ -5,16 +5,27 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="./src/styles/css/index.css" />
 	</head>
 	<body>
 		<div class="currency">
-			<span class="left-info"></span>
-			=
-			<span class="right-info"></span>
-			<input type="text" />
+			<div class="currency__wrapper">
+				<h1 class="currency__title">Конвертер валют</h1>
+				<div class="currency__nums">
+					<span class="currency__num-total">1 USD</span>
+					=
+					<div class="currency__num">77 RUB</div>
+				</div>
+				<div class="currency__double"></div>
+				<form>
+					<input type="number" class="currency__input" min="1" max="99999" />
+					<button class="currency__button">Результат</button>
+				</form>
+			</div>
 		</div>
-		<div class="select-double"></div>
 		<script src="./src/js/index.js" type="module"></script>
 	</body>
 </html>
