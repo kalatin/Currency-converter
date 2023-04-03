@@ -17,6 +17,7 @@ body {
 }
 
 .currency {
+	margin-top: 3%;
 	height: 100%;
 	display: flex;
 	align-items: center;
@@ -123,6 +124,11 @@ body {
 		&__double {
 			flex-direction: column;
 			row-gap: 10px;
+		}
+		.select-change {
+			svg {
+				rotate: (0deg);
+			}
 		}
 	}
 }

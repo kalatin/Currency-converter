@@ -4,18 +4,24 @@ export class Currency {
 	constructor() {
 		this.form = document.querySelector('form');
 		this.input = this.form.querySelector('input');
-		this.from = 1;
+		this.from;
+
+		document.querySelector('.currency__nums').style.display = 'none';
 
 		this.form.addEventListener('submit', e => {
 			e.preventDefault();
-			this.from = this.input.value;
-
-			this.getInfo();
+			if (select_1.selected && select_2.selected && this.input.value !== '') {
+				document.querySelector('.currency__nums').style.display = 'flex';
+				this.from = this.input.value;
+				this.getInfo();
+				this.input.value = '';
+			}
 		});
 
-		this.input.value = '1';
 		this.from = this.input.value;
-		this.getInfo();
+		if (select_1.selected && select_2.selected) {
+			this.getInfo();
+		}
 	}
 
 	getInfo() {
@@ -43,6 +49,5 @@ export class Currency {
 			minimumFractionDigits: 2,
 			maximumFractionDigits: 2,
 		})} ${select_2.selected}`;
-		this.input.value = '';
 	}
 }
