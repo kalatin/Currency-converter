@@ -149,7 +149,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .select {
-  width: 200px;
+  width: 250px;
 }
 .select__field {
   background: #e7e7e7;
@@ -188,20 +188,49 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: 10px;
   border-radius: 3px;
 }
+.select__options {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 30vh;
+  border-radius: 0 0 0 10px;
+}
 
 .select.open .select__field {
   border-radius: 5px 5px 0 0;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+@media (width < 700px) {
+  .select {
+    width: 180px;
+  }
+}
+@media (width < 550px) {
+  .select {
+    width: 250px;
+  }
+  .select__field-text {
+    font-size: 16px;
+  }
+  .select__field-text img {
+    width: 28px;
+  }
+  .select__option-image {
+    width: 28px;
+  }
+}
+html {
+  overflow: hidden;
 }
 
 body {
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: "Open Sans";
   background: rgb(183, 48, 123);
   background: linear-gradient(180deg, rgb(183, 48, 123) 12%, rgb(64, 61, 152) 78%);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .currency {
@@ -221,6 +250,7 @@ body {
   row-gap: 30px;
 }
 .currency__title {
+  text-align: center;
   font-size: 50px;
   color: #453f69;
   line-height: 130%;
@@ -228,11 +258,13 @@ body {
 .currency__nums {
   display: flex;
   justify-content: center;
+  align-items: center;
   color: #3b3b3b;
   font-size: 25px;
   text-align: center;
   -moz-column-gap: 15px;
        column-gap: 15px;
+  line-height: 150%;
 }
 .currency__double {
   display: flex;
@@ -260,10 +292,48 @@ body {
   font-size: 18px;
   border-radius: 5px;
 }
+.currency__num-total {
+  line-height: 150%;
+}
+.currency__num {
+  line-height: 150%;
+}
 
 .select-change svg {
   rotate: 90deg;
 }
 .select-change svg:hover {
   cursor: pointer;
+}
+
+@media (width < 700px) {
+  .currency__wrapper {
+    padding: 20px 30px;
+  }
+  .currency__title {
+    font-size: 40px;
+  }
+  .currency__nums {
+    flex-direction: column;
+    font-size: 22px;
+  }
+  .currency__input, .currency__button {
+    font-size: 15px;
+  }
+}
+@media (width < 550px) {
+  .currency__title {
+    font-size: 32px;
+  }
+  .currency__wrapper {
+    row-gap: 20px;
+  }
+  .currency__double {
+    flex-direction: column;
+    row-gap: 10px;
+  }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }

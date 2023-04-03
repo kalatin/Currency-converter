@@ -1,3 +1,5 @@
+import { currency } from './index.js';
+
 export function doubleSelect(selectArray, containerClass) {
 	// Достаем селекты
 	let select_1 = selectArray[0];
@@ -51,6 +53,7 @@ export function doubleSelect(selectArray, containerClass) {
 			select_1.changeSelected(selected_2, textContent_2);
 			select_2.changeSelected(selected_1, textContent_1);
 		}
+		currency.getInfo();
 	}
 
 	// Если option одинаковые
@@ -69,6 +72,7 @@ export function doubleSelect(selectArray, containerClass) {
 				selected_1 = select_1.selected;
 				selected_2 = select_2.selected;
 			}
+			currency.getInfo();
 		});
 	});
 }

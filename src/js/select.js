@@ -3,21 +3,23 @@ export class Select {
 		this.name = name;
 		this.isOpen = false;
 
+		// Создание элемента select
 		this.selectElem = document.createElement(`div`);
 		this.selectElem.className = `select ${this.name}`;
 		this.selectElem.dataset.selected = '';
 		this.selectElem.dataset.name = this.name;
 		this.selectElem.innerHTML = `
-		<div class="select__field" tabindex="0">
-			<div class="select__field-text"></div>
-			<div class="select__field-mark">
-				<span></span>
-				<span></span>
+			<div class="select__field" tabindex="0">
+				<div class="select__field-text"></div>
+				<div class="select__field-mark">
+					<span></span>
+					<span></span>
+				</div>
 			</div>
-		</div>
-		<div class="select__options">
-		</div>`;
+			<div class="select__options">
+			</div>`;
 
+		// Части select-а
 		this.selected = this.selectElem.dataset.selected;
 		this.selectField = this.selectElem.querySelector('.select__field');
 		this.selectFieldText = this.selectElem.querySelector('.select__field-text');
@@ -25,8 +27,13 @@ export class Select {
 
 		// Добавление option-а
 		if (options && options.length > 0) {
+			options.find(item => {
+				if (!item.selected) {
+					this.selectFieldText.innerHTML = 'Выберите';
+				}
+			});
 			options.forEach(option => {
-				if (option.selected === true) {
+				if (option.selected) {
 					this.changeSelected(option.value, option.text);
 				}
 				this.selectOptions.insertAdjacentHTML(
@@ -38,7 +45,11 @@ export class Select {
 
 		// Добавляем открытие при клике на select
 		this.selectField.addEventListener('click', () => {
-			this.open();
+			if (this.isOpen) {
+				this.close();
+			} else {
+				this.open();
+			}
 		});
 
 		// Клик на option

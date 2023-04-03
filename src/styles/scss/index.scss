@@ -1,15 +1,19 @@
 @import './reset';
 @import './select';
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
+html {
+	overflow: hidden;
 }
 
 body {
+	margin: 0;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 	font-family: 'Open Sans';
 	background: rgb(183, 48, 123);
 	background: linear-gradient(180deg, rgba(183, 48, 123, 1) 12%, rgba(64, 61, 152, 1) 78%);
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .currency {
@@ -29,6 +33,7 @@ body {
 	}
 
 	&__title {
+		text-align: center;
 		font-size: 50px;
 		color: #453f69;
 		line-height: 130%;
@@ -37,10 +42,12 @@ body {
 	&__nums {
 		display: flex;
 		justify-content: center;
+		align-items: center;
 		color: #3b3b3b;
 		font-size: 25px;
 		text-align: center;
 		column-gap: 15px;
+		line-height: 150%;
 	}
 
 	&__double {
@@ -69,6 +76,12 @@ body {
 		font-size: 18px;
 		border-radius: 5px;
 	}
+	&__num-total {
+		line-height: 150%;
+	}
+	&__num {
+		line-height: 150%;
+	}
 }
 
 .select-change {
@@ -78,4 +91,43 @@ body {
 			cursor: pointer;
 		}
 	}
+}
+
+@media (width <700px) {
+	.currency {
+		&__wrapper {
+			padding: 20px 30px;
+		}
+		&__title {
+			font-size: 40px;
+		}
+		&__nums {
+			flex-direction: column;
+			font-size: 22px;
+		}
+		&__input,
+		&__button {
+			font-size: 15px;
+		}
+	}
+}
+
+@media (width < 550px) {
+	.currency {
+		&__title {
+			font-size: 32px;
+		}
+		&__wrapper {
+			row-gap: 20px;
+		}
+		&__double {
+			flex-direction: column;
+			row-gap: 10px;
+		}
+	}
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
 }

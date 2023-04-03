@@ -1,34 +1,48 @@
 import { select_1, select_2 } from './index.js';
 
-export function currency() {
-	const form = document.querySelector('form');
-	const input = form.querySelector('input');
+export class Currency {
+	constructor() {
+		this.form = document.querySelector('form');
+		this.input = this.form.querySelector('input');
+		this.from = 1;
 
-	let asMuch = 0;
+		this.form.addEventListener('submit', e => {
+			e.preventDefault();
+			this.from = this.input.value;
 
-	form.addEventListener('submit', e => {
-		e.preventDefault();
-		setInfo();
-	});
+			this.getInfo();
+		});
 
-	console.log(getSelects());
-
-	function setInfo() {
-		// const options = {
-		// 	method: 'GET',
-		// 	headers: {
-		// 		'X-RapidAPI-Key': '3cfb38216dmshdd574704b76d4c5p15b531jsnc43e6f6c1d1d',
-		// 		'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com',
-		// 	},
-		// };
-		// fetch(`https://currency-exchange.p.rapidapi.com/exchange?from=USD&to=RUB&q=${input.value}`, options)
-		// 	.then(response => response.json())
-		// 	.then(response => console.log(response))
-		// 	.catch(err => console.error(err));
+		this.input.value = '1';
+		this.from = this.input.value;
+		this.getInfo();
 	}
-	console.log(select_2);
-}
 
-function getSelects() {
-	return [document.querySelector('.select-1'), document.querySelector('.select-2')];
+	getInfo() {
+		if (select_1.selected && select_2.selected) {
+			fetch(`https://open.er-api.com/v6/latest/${select_1.selected}`)
+				.then(response => {
+					return response.json();
+				})
+				.then(response => {
+					this.setInfo(response.rates[select_2.selected]);
+				})
+				.catch(err => console.error(err));
+		}
+	}
+
+	setInfo(asMuch) {
+		let from = document.querySelector('.currency__num-total');
+		let to = document.querySelector('.currency__num');
+
+		from.textContent = `${Number(this.from).toLocaleString(undefined, {
+			minimumFractionDigits: 2,
+			maximumFractionDigits: 2,
+		})} ${select_1.selected}`;
+		to.textContent = `${(asMuch * this.from).toLocaleString(undefined, {
+			minimumFractionDigits: 2,
+			maximumFractionDigits: 2,
+		})} ${select_2.selected}`;
+		this.input.value = '';
+	}
 }
